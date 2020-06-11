@@ -5,9 +5,12 @@ from datetime import datetime
 import random
 import os
 import math
+from pathlib import Path
 
 
-with open('config.json', 'r') as c:
+my_path = Path(__file__).resolve()  # resolve to get rid of any symlinks
+config_path = my_path.parent / 'config.json'
+with open(config_path, 'r') as c:
     params = json.load(c)["params"]
 
 app = Flask(__name__)

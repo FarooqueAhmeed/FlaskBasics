@@ -2,8 +2,8 @@
     "params":
     {
         "local_server": "True",
-        "local_uri": "mysql://root:@localhost/sampledb",
-        "prod_uri": "mysql://root:@localhost/sampledb",
+        "local_uri": "mysql://root:yaKhudaKhair@localhost/sampledb",
+        "prod_uri": "mysql://root:yaKhudaKhair@localhost/sampledb",
         "git_url": "",
         "twit_url": "",
         "blog_name": "My Blog",
