@@ -1,0 +1,18 @@
+{
+    "params":
+    {
+        "local_server": "True",
+        "local_uri": "mysql://root:@localhost/sampledb",
+        "prod_uri": "mysql://root:@localhost/sampledb",
+        "git_url": "",
+        "twit_url": "",
+        "blog_name": "My Blog",
+        "jumbotron": "Codingthon",
+        "tagline": "Canvas for my mind.",
+        "num_of_pos": 5,
+        "admin_user": "root",
+        "admin_password": "yaKhudaKhair"
+
+    }
+
+}

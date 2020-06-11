@@ -7,5 +7,11 @@
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://db4free.net:3306/warehouse2020</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="app.db" uuid="039b877c-abec-4135-80b7-a8227710cdb2">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/Level2/Tasks/app/app.db</jdbc-url>
+    </data-source>
   </component>
 </project>

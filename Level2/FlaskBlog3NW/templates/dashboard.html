@@ -1,0 +1,54 @@
+{% extends 'dashlayout.html' %}
+
+{% block body %}
+
+<header class="masthead" style="background-image: url({{url_for('static', filename='img/about-bg.jpg') }})">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="page-heading">
+            <h1>Admin Panel</h1>
+            <span class="subheading"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+  <div class="container">
+    <h1>CREATE NEW POST</h1> <a href="/edit/create-new-post"><button class="btn btn-primary"> Create </button></a>
+    <br>
+    
+    <br>
+    <h1>POSTS DASHBOARD</h1>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Sr.</th>
+          <th>Title</th>
+          <th>Date</th>
+          <th>View</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+
+      {% for post in posts %}
+        <tr>
+          <td>{{loop.index}}</td>
+          <td>{{post.title}}</td>
+          <td>{{post.date}}</td>
+          <td><a href="/post/{{post.slug}}"><button class="btn btn-primary"> View </button></a></td>
+          <td><a href="/edit/{{post.sno}}"><button class="btn btn-warning"> Edit </button></a></td>
+          <td><a href="/delete/{{post.sno}}"><button class="btn btn btn-danger"> Delete </button></a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+      
+    </table>
+  </div>
+  
+  {% endblock %}
