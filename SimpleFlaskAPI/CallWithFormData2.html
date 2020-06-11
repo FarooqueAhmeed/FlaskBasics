@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>Call It With Form</title>
+    <script type="application/javascript">
+        window.addEventListener("load", function () {
+            function sendData() {
+
+                // Bind the FormData object and the form element
+                const formData = new FormData(form);
+                URL = "http://127.0.0.1:5000/" + formData.get('opCombo');
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        var response = xhttp.responseText;
+                        if (xhttp.status === 200) {
+                            var resp = JSON.parse(response); //Convert String into JSON
+                            var resLbl = document.getElementById("resLbl");
+                            resLbl.innerText = resp.Message;
+                        }
+
+                    }
+                };
+                xhttp.open("POST", URL, true);
+                xhttp.setRequestHeader("Content-Type", "application/json");
+
+                var ItemJSON = JSON.stringify({"x": formData.get("xTxt"), "y": formData.get("yTxt")}); //Convert JSON into string
+                xhttp.send(ItemJSON);
+            }
+
+            // Access the form element...
+            const form = document.getElementById("myForm");
+
+            // ...and take over its submit event.
+            form.addEventListener("submit", function (event) {
+                event.preventDefault();
+
+                sendData();
+            });
+        });
+    </script>
+</head>
+
+<body>
+<form id="myForm">
+    <label for="opCombo">Operation</label>
+    <select name="opCombo" id="operationsSelect">
+        <option value="add">Addition</option>
+        <option value="subtract">Subtraction</option>
+        <option value="multiply">Multiplication</option>
+        <option value="divide">Division</option>
+    </select>
+    <label for="xTxt">x:</label>
+    <input type="text" id="xTxt" name="xTxt" value="30">
+    <label for="yTxt">Y:</label>
+    <input type="text" id="yTxt" name="yTxt" value="80">
+    <label id="resLbl"></label>
+    <input type="submit" value="Send">
+</form>
+</body>
+</html>

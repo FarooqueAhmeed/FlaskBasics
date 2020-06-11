@@ -5,9 +5,10 @@ import yaml
 from pathlib import Path
 import os
 
-bootstrap = Bootstrap()
+
 app = Flask(__name__)
-bootstrap.init_app(app)
+bootstrap = Bootstrap(app)
+
 
 
 my_path = Path(__file__).resolve()  # resolve to get rid of any symlinks

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Send POST Request</title>
+
+    <script type="text/javascript" language="javascript">
+
+        function send() {
+
+            URL = "http://127.0.0.1:5000/add";
+
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    var response = xhttp.responseText;
+                    console.log("ok" + response);
+                    document.getElementById("div").innerHTML = xhttp.statusText + ":" + xhttp.status + "<BR><textarea rows='100' cols='100'>" + xhttp.responseText + "</textarea>";
+                }
+            };
+            xhttp.open("POST", URL, true);
+            xhttp.setRequestHeader("Content-Type", "application/json");
+            var ItemJSON;
+            ItemJSON = '{"x": 30,"y": "80"}';
+            xhttp.send(ItemJSON);
+        }
+
+        function callbackFunction(xmlhttp) {
+            //alert(xmlhttp.responseXML);
+        }
+    </script>
+
+
+    <html>
+<body>
+<button type="submit" onclick="javascript:send()">call</button>
+<div id='div'>
+
+</div>
+</body>
+</html>
