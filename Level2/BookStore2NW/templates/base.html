@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %} - BookStore</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='/css/base.css') }}">
+	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+		</div>
+	</div>
+	<div class="row clearfix">
+		<div class="col-md-3 column">
+		</div>
+
+		<div class="col-md-6 column">
+        <nav>
+            <a href="{{ url_for('products.index') }}">
+                <img src="{{ url_for('static',filename='/images/logo.jpg') }}" class="logo left" alt="logo">
+                <h1 class="left">BookStore</h1></a>
+            <ul class="left">
+                {% if g.user %}
+                    <li><span>{{ g.user['username'] }}</span></li>
+                <li><a href="{{ url_for('user.logout') }}">Log Out</a></li>
+                {% else %}
+                 <li class="register"><a href="{{ url_for('user.register') }}">Register</a></li>
+                <li><a href="{{ url_for('user.login') }}">Log In</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+
+        <header>
+            {% block header %}
+            {% endblock %}
+        </header>
+          {% for message in get_flashed_messages() %}
+            <div class="flash"><b>{{ message }}</b></div>
+          {% endfor %}
+
+          {% block content %}
+          {% endblock %}
+
+            <a href="mailto:caisi1735@163.com" class="right">Email to Administrator:caisi1735@163.com</a>
+
+		</div>
+
+		<div class="col-md-3 column">
+		</div>
+	</div>
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+		</div>
+	</div>
+</div>
+</body>
+</html>
+

@@ -1,0 +1,102 @@
+{% extends 'admin/indexBase.html' %}
+
+{% block title %}用户管理{% endblock %}
+
+{% block search %}
+    <form class="navbar-form navbar-right" method="get" action="{{ url_for('userAdmin.search') }}">
+        <input type="text" class="form-control" name="kw" placeholder="Search...Users">
+    </form>
+{% endblock %}
+
+{% block sub_header %}
+    <h2 class="sub-header">用户列表</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>用户名</th>
+                <th>手机号</th>
+                <th>email</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for user in users %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{% if user.name == None %}{% else %}{{ user.name }}{% endif %}</td>
+                    <td>{{ user.tel }}</td>
+                    <td>{% if user.email == None %}{% else %}{{ user.email }}{% endif %}</td>
+                    <td>
+                        <a type="button" class="btn btn-primary" role="button"
+                           onclick="resetPwd('{{ user.id }}')">重置密码</a>&nbsp;&nbsp;
+                        {% if user.is_freezing %}
+                            <a type="button" class="btn btn-danger" role="button"
+                               onclick="activate_user('{{ user.id }}')">激活账户</a>
+                        {% else %}
+                            <a type="button" class="btn btn-danger" role="button"
+                               onclick="freezing_user('{{ user.id }}')">冻结账户</a>
+                        {% endif %}
+                        &nbsp;
+                        <button type="button" class="btn btn-danger" onclick="add_user_to_trash('{{ user.id }}')">
+                            加入回收站
+                        </button>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="row text-center">
+        <nav aria-label="Page navigation">
+            <ul class="pagination pagination-lg">
+                <li {% if active_page == 1 %}class="disabled"{% endif %}>
+                    {% if active_page == 1 %}
+                        <a>首页</a>
+                    {% else %}
+                        <a href="{{ url_for('userAdmin.userAdmin', page=1) }}">首页</a>
+                    {% endif %}
+                </li>
+                <li {% if active_page == 1 %}class="disabled"{% endif %}>
+                    {% if active_page == 1 %}
+                        <a aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    {% else %}
+                        <a href="{{ url_for('userAdmin.userAdmin', page=active_page - 1) }}" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    {% endif %}
+                </li>
+                {% for page in pages %}
+                    <li class="{% if active_page == page %}active{% endif %}">
+                        <a href="{{ url_for('userAdmin.userAdmin', page=page) }}">{{ page }}</a></li>
+                {% endfor %}
+                <li {% if active_page == pages|max %}class="disabled"{% endif %}>
+                    {% if active_page == max_page %}
+                        <a aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    {% else %}
+                        <a href="{{ url_for('userAdmin.userAdmin', page=active_page + 1) }}" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    {% endif %}
+                </li>
+                <li {% if active_page == pages|max %}class="disabled"{% endif %}>
+                    {% if active_page == pages|max %}
+                        <a>尾页</a>
+                    {% else %}
+                        <a href="{{ url_for('userAdmin.userAdmin', page=max_page) }}">尾页</a>
+                    {% endif %}
+                </li>
+                <li class="disabled"><a>共{{ max_page }}页</a></li>
+            </ul>
+        </nav>
+    </div>
+{% endblock %}
+
+{% block js_bottom %}
+    <script src="{{ url_for('static', filename='js/admin/admin_bottom.js') }}"></script>
+{% endblock %}

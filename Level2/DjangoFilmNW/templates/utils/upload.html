@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}上传图书数据{% endblock %}
+{% load static %}
+{% block link_css %}
+    <link rel="stylesheet" href="{% static '/css/auth/signin.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <form method="post" enctype="multipart/form-data">
+             {% csrf_token %}
+            <label>请选择上传文件：</label>
+            <input class="form-control" type="file" name="file">
+            <br>
+            <button class="btn btn-primary" type="submit">上传</button>
+        </form>
+    </div>
+{% endblock %}
+
+{% block page %}
+{% endblock %}
