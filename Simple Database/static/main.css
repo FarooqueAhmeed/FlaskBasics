@@ -1,0 +1,8 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+body {
+    font-family: montserrat, arial, verdana;
+}
+
+#success_message {
+    display: none;
+}
