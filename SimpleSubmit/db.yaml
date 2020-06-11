@@ -1,0 +1,5 @@
+# set configuration parameters as key value pairs
+mysql_host: 'localhost'
+mysql_user: 'root'
+mysql_password: 'yaKhudaKhair'
+mysql_db: 'sampledb'

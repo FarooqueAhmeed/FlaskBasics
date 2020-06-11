@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	{% block head %}
+	
+		<!-- Required meta tags -->
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		
+		{% block styles %}
+			<!-- Bootstrap CSS -->
+			{{ bootstrap.load_css() }}
+		{% endblock %}
+		
+		<title>{{ title }}</title>
+		
+	{% endblock %}
+</head>
+<body>
+
+	<!-- navbar content -->
+  {% block navbar %}
+  	{% include '_navbar.html' %}
+  {% endblock %}	
+
+	<!-- Your page content -->
+	{% block content %}
+		<div class="container">
+
+			<div class="row justify-content-center mt-3">
+				{% with messages = get_flashed_messages(with_categories=true) %}
+					{% if messages %}
+						<ul class="flashes pl-0">
+							{% for category, message in messages %}
+								<li style="list-style-type: none;" class="alert alert-{{ category }}">
+									<strong>
+										{{ message | safe }}
+									</strong>
+								</li>
+							{% endfor %}
+						</ul>
+					{% endif %}
+				{% endwith %}
+			</div>
+				
+			<div class="row justify-content-center mt-3">
+				{% block sub_content %}{% endblock %}
+			</div> <!-- row div ends -->
+			
+		</div> <!-- container div ends -->
+	{% endblock %}
+	
+	{% block scripts %}
+		<!-- Optional JavaScript -->
+		{{ bootstrap.load_js() }}
+	{% endblock %}
+	
+</body>
+</html>
