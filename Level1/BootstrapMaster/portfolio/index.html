@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>    
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <style>
+        section {
+            width: 100vw;
+            height: 100vh;
+            padding: 100px;
+        }
+        .cl_white {
+            color: white;
+            font-style: italic; 
+        }
+        img {
+            width: 300px;
+            height: 200px !important;
+            transition: opacity .2s ease-in-out;
+        }
+        img:hover {
+            opacity: .5;
+        }
+        .col-text {
+            -webkit-column-count: 3;
+        }
+    </style>
+</head>
+<body data-spy="scroll" data-target=".navbar">
+    <nav class="navbar bg-dark fixed-top">
+        <ul class="nav navbar">
+            <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="#work" class="nav-link">What I do</a></li>
+            <li class="nav-item"><a href="#about" class="nav-link">What about me</a></li>
+            <li class="nav-item"><a href="#contact" class="nav-link">Contact me</a></li>
+        </ul>
+    </nav>
+    <section id="home" style="background-image: url(img/wisteria.jpg); background-size: 100%;" class="cl_white text-center">
+        <h1>My Portfolio</h1>
+        <p class="lead">
+            Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus.
+        </p>
+        <button class="btn btn-primary">Contact me!</button>
+    </section>
+    <section class="container" id="work">
+        <div>
+            <h1>My Works</h1>
+        </div>
+        <img src="img/corona.webp" class="img-thumbnail" alt="">
+        <img src="img/papa.jpg" class="img-thumbnail" alt="">
+        <img src="img/light_bulb.jpg" class="img-thumbnail" alt="">
+        <img src="img/light_bulb.jpg" class="img-thumbnail" alt="">
+        <img src="img/wisteria.jpg" class="img-thumbnail" alt="">
+        <img src="img/pull.jpg" class="img-thumbnail" alt="">
+    </section>
+    <section class="container" id="about">
+        <h1 class="text-center">My Work</h1>
+        <div class="col-text">
+            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium 
+            doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore 
+            veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam
+            voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia 
+            consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque 
+            porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, 
+            adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et 
+            dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis 
+            nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex 
+            ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea 
+            voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem 
+            eum fugiat quo voluptas nulla pariatur
+        </div><br>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        My Header
+                    </div>
+                    <div class="card-body text-center">
+                        <img src="img/corona.webp" class="rounded-circle" alt="">
+                        <p class="text-center">This is the body</p>
+                    </div>
+                    <div class="card-footer">
+                        Footer
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        My Header
+                    </div>
+                    <div class="card-body mx-auto">
+                        <img src="img/corona.webp" class="rounded-circle center-block" alt="">
+                        <p class="text-center">This is the body</p>
+                    </div>
+                    <div class="card-footer">
+                        Footer
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><br><br><br><br><br><br>
+    <section style="background-color: aliceblue;" id="contact">
+        <div class="header">
+            <h2 class="text-center">Contact me!</h2>
+            <hr>
+        </div>
+        <form class="col-md-6 offset-md-3">
+            <div class="form-group">
+                <input class="form-control" placeholder="Your name" type="text">
+            </div>
+            <div class="form-group">
+                <input class="form-control" placeholder="email" type="email">
+            </div>
+            <div class="form-group">
+                <input class="form-control" placeholder="subject" type="text">
+            </div>
+            <div class="form-group">
+                <textarea class="form-control">Comment</textarea>
+            </div>
+            <div class="form-group">
+                <input class="btn btn-success btn-block" type="submit">
+            </div>
+        </form>
+    </section>
+</body>
+</html>

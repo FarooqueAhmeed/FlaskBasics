@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <link rel="stylesheet" href="css/bootstrap.css">
+
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.bundle.js"></script>
+    <script src="js/bootstrap.js"></script>    
+</head>
+
+<body>
+    <br><hr><br><br>
+    <!-- Inline List -->
+    <ul class="list-inline">
+        <li class="list-inline-item "><a href="#">Home</a></li>
+        <li class="list-inline-item"><a href="#">About</a></li>
+        <li class="list-inline-item"><a href="#">Tech</a></li>
+        <li class="list-inline-item"><a href="#">Contact</a></li>
+    </ul>
+    
+    <br><hr><br><br>
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link active" href="#">Active</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        </li>
+    </ul>
+    
+    <br><hr><br><br>
+    <!-- Dropdown with nav-tabs -->
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link" href="#">Active</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Toggle</a>
+            <ul class="dropdown-menu">
+                <li><a href="#">Child 1</a></li>
+                <li><a href="#">Child 2</a></li>
+                <li><a href="#">Child 3</a></li>
+                <li><a href="#">Child 4</a></li>
+            </ul>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+        </li>
+    </ul>
+
+    <br><hr><br><br>
+    <!-- Nav pills -->
+    <ul class="nav nav-pills">
+        <li class="nav-item">
+            <a class="nav-link active" href="#">Pill 1</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Pill 2</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Pill 3</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Pill 4</a>
+        </li>
+    </ul>
+ 
+    <br><hr><br><br>
+    <!-- Nav pills with dropdowns -->
+    <ul class="nav nav-pills">
+        <li class="nav-item">
+            <a class="nav-link active" href="#">Pill 1</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Pill 2</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Pill 3</a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Pill 4</a>
+            <ul class="dropdown-menu">
+                <li><a href="">Link</a></li>
+                <li><a href="">Link</a></li>
+                <li><a href="">Link</a></li>
+                <li><a href="">Link</a></li>
+            </ul>
+        </li>
+    </ul>
+
+    <br><hr><br><br>
+    <!-- Nav pills with nav-stacked -->
+    <ul class="nav flex-column nav-pills">
+        <li class="nav-item">
+            <a class="nav-link active" href="#">Pill 1</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Pill 2</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Pill 3</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Pill 3</a>
+        </li>
+    </ul>
+
+    <br><hr><br><br>
+    <!-- Nav pills -->
+    <ul class="nav nav-pills nav-justified">
+        <li class="nav-item">
+            <a class="nav-link active" href="#">Pill 1</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Pill 2</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Pill 3</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Pill 4</a>
+        </li>
+    </ul>
+
+    <br><hr><br><br>
+    <!-- Nav-pills with tab-content -->
+    <ul class="nav nav-pills">
+        <li class="nav-item"><a href="#p2" class="nav-link active" data-toggle="pill">Home</a></li>
+        <li class="nav-item"><a href="#p1" class="nav-link" data-toggle="pill">Home</a></li>
+        <li class="nav-item"><a href="#p3" class="nav-link" data-toggle="pill">Home</a></li>
+        <li class="nav-item"><a href="#p4" class="nav-link" data-toggle="pill">Home</a></li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane" id="p1">This is the p1</div>
+        <div class="tab-pane" id="p2">This is the p2</div>
+        <div class="tab-pane" id="p3">This is the p3</div>
+        <div class="tab-pane" id="p4">This is the p4</div>
+    </div>
+
+    <br><hr><br><br>
+    <!-- Nav-pills with tab-content -->
+    <ul class="nav nav-tabs">
+        <li class="nav-item"><a href="#t1" class="nav-link active" data-toggle="pill">Home</a></li>
+        <li class="nav-item"><a href="#t2" class="nav-link" data-toggle="pill">Home</a></li>
+        <li class="nav-item"><a href="#t3" class="nav-link" data-toggle="pill">Home</a></li>
+        <li class="nav-item"><a href="#t4" class="nav-link" data-toggle="pill">Home</a></li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane" id="t1">This is the p1</div>
+        <div class="tab-pane" id="t2">This is the p2</div>
+        <div class="tab-pane" id="t3">This is the p3</div>
+        <div class="tab-pane" id="t4">This is the p4</div>
+    </div>
+
+    <br><hr><br><br>
+    <!-- Pager is not apt for bootstrap 4 -->
+    <ul class="pagination">
+        <li class="page-item"><a href="" class="page-link">1</a></li>
+        <li class="page-item"><a href="" class="page-link">2</a></li>
+        <li class="page-item"><a href="" class="page-link">3</a></li>
+        <li class="page-item"><a href="" class="page-link">4</a></li>
+        <li class="page-item"><a href="" class="page-link">5</a></li>
+        <li class="page-item"><a href="" class="page-link">6</a></li>
+    </ul>
+
+    <br><hr><br><br>
+
+    <ul class="pagination pagination-lg">
+        <li class="page-item active"><a href="" class="page-link">1</a></li>
+        <li class="page-item"><a href="" class="page-link">2</a></li>
+        <li class="page-item"><a href="" class="page-link">3</a></li>
+        <li class="page-item"><a href="" class="page-link">4</a></li>
+        <li class="page-item disabled"><a href="" class="page-link">5</a></li>
+        <li class="page-item"><a href="" class="page-link">6</a></li>
+    </ul>
+    
+    <br><hr><br><br>
+    <!-- Nav bar -->
+    <div class="navbar navbar-dark bg-light">
+        <div class="container">
+            <a href="" class="navbar-brand" style="color: blue;">Bootstrap</a>
+            <ul class="nav">
+                <a href="" class="nav-item nav-link">Home</a>
+                <a href="" class="nav-item nav-link">Home</a>
+                <a href="" class="nav-item nav-link">Home</a>
+                <a href="" class="nav-item nav-link">Home</a>
+            </ul>
+        </div>
+    </div>
+
+    <!-- primary navbar with fixed top -->
+    <div class="navbar navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a href="" class="navbar-brand">Bootstrap</a>
+            <ul class="nav">
+                <a href="" class="nav-item nav-link" style="color: white;">Home</a>
+                <a href="" class="nav-item nav-link" style="color: white;">Home</a>
+                <a href="" class="nav-item nav-link" style="color: white;">Home</a>
+                <a href="" class="nav-item nav-link" style="color: white;">Home</a>
+            </ul>
+        </div>
+    </div>
+
+    <br><hr><br><br>
+
+    <nav class="navbar sticky-top navbar-light bg-light">
+        <a class="navbar-brand" href="#">Sticky top</a>
+    </nav>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/timeline.css">
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/sweetalert.min.js"></script>
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="topnav">
+        <nav>
+            <ul>
+                <li>
+                    <a class="active" href="#home">Home</a>
+                </li>
+                <li>
+                    <a href="#about">About</a>
+                </li>
+                <li>
+                    <a href="allposts.html">Contact</a>
+                </li>
+            </ul>
+            <div class="search-container">
+                <form class="search" method="POST" action="">
+                  <input type="text" placeholder="Search" name="search" autocomplete="off">
+                  <a href="">
+                    <i class="fa fa-search"></i>
+                  </a>
+                </form>
+            </div>      
+        </nav>
+    </div>
+    <div class="overlay"></div>
+    <div class="floater-content">
+        <form class="post-form" onsubmit="event.preventDefault(); create_post()">
+          <div class="create-post">
+            <div class="floater-top">
+                <textarea name="post-area" id="post-area" cols="52" rows="5" placeholder="What's on your mind?"></textarea>
+            </div>
+            <div class="floater-bottom">
+                <button type="submit" class="btn">Add</button>
+            </div>
+          </div>
+        </form>
+    </div> 
+    <div class="posts-list content"></div>
+
+    <script>
+        let user = localStorage.getItem('user');
+        if (!user) {
+            location.href = '/logging.html';
+        }
+
+        const postsList = document.querySelector('.posts-list');
+        const posts     = JSON.parse(localStorage.getItem('posts')) || [];
+        const postForm  = document.querySelector('.post-form');
+        
+        function create_post() {
+            user = JSON.parse(localStorage.getItem('user'));
+            
+            let data = {
+                content : document.getElementById('post-area').value
+            };
+            
+            let jsonString = JSON.stringify(data);
+            
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', 'http://localhost:5000/posts');
+            xhr.setRequestHeader("Authorization", user.session_id);
+            xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+            // xhr.onload = () => {alert(`Loaded: ${xhr.status} ${xhr.response}`);};
+            xhr.send(jsonString);
+
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', 'http://localhost:5000/posts');
+            xhr.setRequestHeader("Authorization", user.session_id);
+            xhr.setRequestHeader('content-type', 'application/json; charset=utf-8');
+            xhr.onload = () => {
+                alert(`loaded: ${xhr.status} ${xhr.response}`);
+                localStorage.setItem("posts", xhr.response);
+            };
+            xhr.send(null);
+            fillpostsList(posts);
+            storeposts(posts);
+            postForm.reset();  
+        } 
+
+
+    function fillpostsList(posts = []) {
+        const postsHtml = posts.map((post, i) => {
+        return `
+            <a href="#" class="post" data-id="${i}">
+            <div class="img"></div>
+            <div class="title">${post.content}</div>
+            <span class="glyphicon glyphicon-remove"></span>
+            </a>
+        `;
+        }).join('');     
+        postsList.innerHTML = postsHtml;    
+    }
+
+    function storeposts(posts = []) {
+      localStorage.setItem('posts', JSON.stringify(posts));
+    }
+
+    </script>
+
+</body>
+</html>
+ 

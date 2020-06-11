@@ -1,0 +1,89 @@
+### Register
+POST http://localhost:8000/register HTTP/1.1
+Content-Type: application/json
+
+{
+    "username": "arjun",
+    "password": "arjun",
+    "email": "arjun@gmail.com",
+    "mobile": "1234569999"
+}
+
+### Login
+POST http://localhost:8000/login HTTP/1.1
+Content-Type: application/json
+
+{
+    "username": "anu",
+    "password": "anu"
+}
+
+### Logout
+DELETE http://localhost:8000/logout HTTP/1.1
+Authorization: 01abe6a8-3dea-4b19-bf64-2f4d8690f315
+
+
+
+### List Posts
+GET http://localhost:8000/posts HTTP/1.1
+Authorization: 068f8109-7258-46ed-acf7-980a80a3de13
+
+### Create Post
+POST http://localhost:8000/posts HTTP/1.1
+Content-Type: application/json
+Authorization: 3470dd46-aa5c-498a-b615-31ec31132f91
+
+{
+    "content": "This is my post"
+}
+
+### Get Post
+GET http://localhost:8000/posts/6 HTTP/1.1
+Authorization: 18c47388-9a9f-497e-bc86-e329fb352510
+
+### Update Post
+PUT http://localhost:8000/posts/2 HTTP/1.1
+Content-Type: application/json
+Authorization: 417fa674-1602-4ca6-bed6-9d9239f82151
+
+{
+    "content": "1 updated post "
+}
+
+### Delete Post
+DELETE http://localhost:8000/posts/2 HTTP/1.1
+Authorization: 12e4989d-e364-430e-8283-4b94000b1ffb
+
+
+
+### Get comment
+GET http://localhost:8000/posts/1/comments HTTP/1.1
+Content-Type: application/json
+Authorization: 0681a541-d0a9-4cc0-a08f-2743f3147c5f
+
+### Create comment
+POST http://localhost:8000/posts/1/comments HTTP/1.1
+Content-Type: application/json
+Authorization: 3bb19959-0c34-4b1f-9d61-54de3ab2d51e
+
+{
+    "body": "This is my comment 2"
+}
+
+### Delete comment
+DELETE http://localhost:8000/posts/1/comments/4 HTTP/1.1
+Authorization: 6e5880e9-d5a1-4b03-8d3c-fe811dc6941b
+
+
+
+### Get likes
+GET  http://localhost:8000/2/likes HTTp/1.1
+Authorization: 81693172-4c68-4c1c-87bf-ffc813eab77e
+
+### Create likes
+POST http://localhost:8000/posts/2/likes HTTP/1.1
+Authorization: d013eebe-8507-4eba-b537-782fa16691e6
+
+### Delete likes
+DELETE http://localhost:8000/posts/2/likes/1 HTTP/1.1
+Authorization: 08ac88cb-e59e-4f78-bc29-165d60c703a3

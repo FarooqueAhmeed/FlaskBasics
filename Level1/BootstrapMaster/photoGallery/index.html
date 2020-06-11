@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="l-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.bundle.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous"></head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="js/onlinejquery.min.js"></script>
+    <script src="js/onlinebootstrap.min.js"></script> 
+    <style>
+        .navbar {
+            height: 10vh !important;
+            padding: 21px;
+            font-size: 20px;
+            color: white;
+        }
+        .navbar-brand {
+            padding: 10px;
+            font-size: 25px;
+            font-weight: 900;
+        }
+        .thumbnail img {
+            height: 200px;
+            width: 340px;
+        }
+        footer {
+            background-color: black;
+        }
+    </style>   
+</head>
+<body>
+    <nav class="navbar bg-dark fixed-top navbar-expand-sm">
+            <div class="navbar navbar-header">
+                <div class="navbar-brand">Photo Gallery</div>
+            </div>
+            
+            <ul class="nav navbar ml-auto">
+                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="nature.html" class="nav-link">Nature Gallery</a></li>
+                <li class="nav-item"><a href="" class="nav-link">Science Gallery</a></li>
+            </ul>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 offset-md-1">
+                <div class="carousel slide" data-ride="carousel" id="slider">
+                    <ol class="carousel-indicators">
+                        <li data-target="#slider" data-slide-to="0" class="active"></li>
+                        <li data-target="#slider" data-slide-to="1"></li>
+                        <li data-target="#slider" data-slide-to="2"></li>
+                        <li data-target="#slider" data-slide-to="3"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="item active" id="slider1">
+                            <img src="img/nature1.jpg" style="width:90vw; height: 80vh;" alt="">
+                        </div>
+                        <div class="item" id="slider2">
+                            <img src="img/nature3.jpg" style="width:90vw; height: 80vh;" alt="">
+                        </div>
+                        <div class="item" id="slider3">
+                            <img src="img/nature5.jpg" style="width:90vw; height: 80vh;" alt="">
+                        </div>
+                        <div class="item" id="slider4">
+                            <img src="img/nature6.jpg" style="width:90vw; height: 80vh;" alt="">
+                        </div>
+                    </div>
+                    <a href="#slider" class="left carousel-control" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a href="#slider" class="right carousel-control" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div><br><br>
+        <div class="row justify-content-center">
+            <div class="header"><h1><b>The header</b></h1></div>
+        </div><hr><br>
+        <div class="row">
+            <div class="col-md-4">
+                <a href="#m1" data-toggle="modal" class="thumbnail">
+                    <img src="img/nature1.jpg" alt="">
+                </a>
+                <div class="modal fade" id="m1">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">Header</div>
+                            <div class="modal-body">
+                                <img src="img/nature1.jpg" class="img-thumbnail" alt="">
+                            </div>
+                            <div class="modal-footer">Footer</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <a href="#m2" data-toggle="modal" class="thumbnail">
+                    <img src="img/nature2.jpeg" alt="">
+                </a>
+                <div class="modal fade" id="m2">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">Header</div>
+                            <div class="modal-body">
+                                <img src="img/nature2.jpeg" class="img-thumbnail" style="height: 250px; width: 490px;" alt="">
+                            </div>
+                            <div class="modal-footer">Footer</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <a href="#m3" data-toggle="modal" class="thumbnail">
+                    <img src="img/nature3.jpg" alt="">
+                </a>
+                <div class="modal fade" id="m3">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">Header</div>
+                            <div class="modal-body">
+                                <img src="img/nature3.jpg" class="img-thumbnail" alt="">
+                            </div>
+                            <div class="modal-footer">Footer</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <a href="#m4" data-toggle="modal" class="thumbnail">
+                    <img src="img/nature4.webp" alt="">
+                </a>
+                <div class="modal fade" id="m4">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">Header</div>
+                            <div class="modal-body">
+                                <img src="img/nature4.webp" class="img-thumbnail" alt="">
+                            </div>
+                            <div class="modal-footer">Footer</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <a href="#m5" data-toggle="modal" class="thumbnail">
+                    <img src="img/nature5.jpg" alt="">
+                </a>
+                <div class="modal fade" id="m5">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">Header</div>
+                            <div class="modal-body">
+                                <img src="img/nature5.jpg" class="img-thumbnail" alt="">
+                            </div>
+                            <div class="modal-footer">Footer</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <a href="#m6" data-toggle="modal" class="thumbnail">
+                    <img src="img/nature6.jpg" alt="">
+                </a>
+                <div class="modal fade" id="m6">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">Header</div>
+                            <div class="modal-body">
+                                <img src="img/nature6.jpg" class="img-thumbnail" alt="">
+                            </div>
+                            <div class="modal-footer">Footer</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <a href="#m7" data-toggle="modal" class="thumbnail">
+                    <img src="img/nature1.jpg" alt="">
+                </a>
+                <div class="modal fade" id="m7">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">Header</div>
+                            <div class="modal-body">
+                                <img src="img/nature1.jpg" class="img-thumbnail" alt="">
+                            </div>
+                            <div class="modal-footer">Footer</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <a href="#m8" data-toggle="modal" class="thumbnail">
+                    <img src="img/nature7.jpg" alt="">
+                </a>
+                <div class="modal fade" id="m8">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">Header</div>
+                            <div class="modal-body">
+                                <img src="img/nature7.jpg" class="img-thumbnail" alt="">
+                            </div>
+                            <div class="modal-footer">Footer</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <a href="#m9" data-toggle="modal" class="thumbnail">
+                    <img src="img/nature2.jpeg" alt="">
+                </a>
+                <div class="modal fade" id="m9">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">Header</div>
+                            <div class="modal-body">
+                                <img src="img/nature2.jpeg" class="img-thumbnail" alt="">
+                            </div>
+                            <div class="modal-footer">Footer</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="py-4 bg-dark text-white-50">
+        <div class="container text-center">
+            <small>Copyright &copy; ammu</small>
+        </div>
+    </footer>
+
+</body>
+</html>
