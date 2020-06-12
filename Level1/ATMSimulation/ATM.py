@@ -7,19 +7,19 @@ import json
 class AbstractTransaction(ABC):
     # Abstract Methods
 
-    @abc.abstractproperty
+    @abc.abstractmethod
     def login(self):
         pass
 
-    @abc.abstractproperty
+    @abc.abstractmethod
     def amount_transfer(self):
         pass
 
-    @abc.abstractproperty
+    @abc.abstractmethod
     def credit(self):
         pass
 
-    @abc.abstractproperty
+    @abc.abstractmethod
     def debit(self):
         pass
 

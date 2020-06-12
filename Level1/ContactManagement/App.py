@@ -16,7 +16,7 @@ mysql = MySQL(app)
 @app.route('/')
 def index():
     cur = mysql.connection.cursor()
-    cur.execute('SELECT * FROM contacts')
+    cur.execute('SELECT * FROM contactsList')
     data = cur.fetchall()
     cur.close()
 
@@ -32,7 +32,7 @@ def insert():
         address = request.form['address']
 
         cur = mysql.connection.cursor()
-        cur.execute('INSERT INTO contacts (name,email,phone,address) VALUES (%s,%s,%s,%s)',
+        cur.execute('INSERT INTO contactsList (name,email,phone,address) VALUES (%s,%s,%s,%s)',
                     (name, email, phone, address))
         mysql.connection.commit()
         flash('Contact Added Successfully')
@@ -43,7 +43,7 @@ def insert():
 def delete(id_data):
     flash("Record Has Been Deleted Successfully")
     cur = mysql.connection.cursor()
-    cur.execute("DELETE FROM contacts WHERE id=%s", (id_data,))
+    cur.execute("DELETE FROM contactsList WHERE id=%s", (id_data,))
     mysql.connection.commit()
     return redirect(url_for('index'))
 
@@ -59,7 +59,7 @@ def update():
 
         cur = mysql.connection.cursor()
         cur.execute("""
-               UPDATE contacts
+               UPDATE contactsList
                SET name=%s, email=%s, phone=%s, address=%s
                WHERE id=%s
             """, (name, email, phone, address, id_data))
