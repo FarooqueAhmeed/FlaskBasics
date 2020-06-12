@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Library
+{% endblock %}
+{% set nav = "book-collections"%}
+{% block content %}
+    {% if error == 'no' %}
+        <div class="row justify-content-center">
+            <div class="alert alert-info" role="alert">Not Found</div>
+        </div>
+    {% elif error == 'error' %}
+        <div class="row justify-content-center">
+            <div class="alert alert-info" role="alert">Wrong Input</div>
+        </div>
+    {% else %}
+        <div class="row justify-content-center">
+            <div class="col-lg-6" style="margin-bottom: 20px;">
+                <div class="alert alert-success" role="alert">结果</div>
+            </div>
+        </div>
+        {% for answer in answers %}
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-title">
+                            <h4>{{ answer[0] }}</h4>
+                        </div>
+                        <p class="text-muted ">
+                            <text>Address:</text>
+                            {{ answer[1] }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endblock %}

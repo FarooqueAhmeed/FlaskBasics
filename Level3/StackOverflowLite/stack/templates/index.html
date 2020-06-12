@@ -1,0 +1,78 @@
+{% extends 'layout.html' %}
+{% block body %}
+ 
+ {% if current_user.is_authenticated %}
+     
+ <div class="dashboard">
+    <div class="left">
+       <a href="{{url_for('index')}}" class="user-opt"><h3>{{ current_user }}</h3></a>
+       <a href="{{url_for('view_questions')}}" class="user-opt">View Questions</a>
+       <a href="{{url_for('ask_page')}}" class="user-opt">Ask A Question</a>
+       <a href="{{url_for('logout')}}" class="user-opt">Log Out</a>
+    </div>
+    <div class="right">
+     
+       {% with messages =get_flashed_messages()  %}
+         {% if messages %}
+             {% for message in messages %}
+                 <div class="other">
+                     {{ message }}
+                 </div>
+             {% endfor %}
+         {% endif %}
+         {% endwith %}
+        <div class="recent">
+          <h1>Recent Questions By You</h1>
+          {%for question in questions%}
+
+             {% if question.author==current_user %}
+          
+             <div class="status">
+                 <div class="status-header">
+                       <div class="status-heading">
+                           <div class="prof-pic">
+                               <img src=".{{url_for('static',filename='images/grin-alt.svg')}}" alt="face" width="50">
+                           </div>
+                           <h3>{{question.author}}</h3>
+                       </div>
+                       <div class="time-posted">
+                           <b><small>{{question.date_asked.strftime("asked on %b %d %Y at %H:%M")}}</small></b>
+                       </div>
+                 </div>
+
+
+                 <div class="status-content">
+                  
+                   <a href="/answer_question/{{question.id}}" class="status"><h3>{{question.title}}</h3></a>
+                 </div>
+                
+         </div>
+         
+         <br>
+
+
+             {% endif %}
+
+             {% if not questions %}
+                <div class="quest">
+                   <p>You currently have not asked any</p>
+                </div>
+             {% endif %}
+
+
+          {%endfor%}
+        </div>
+    </div>
+</div>
+{% else %}
+
+      
+  <div class="welcome">
+        <h1>Let Us Answer The Questions Together</h1>
+        <div class="options">
+          <a href="{{url_for('signup')}}" class="mybtn">Create An Account</a>
+          <a href="{{url_for('login')}}" class="mybtn">Login</a>
+        </div>
+    </div>
+  {% endif %}
+{% endblock body %}

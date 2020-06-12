@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Query By Author
+{% endblock %}
+
+{% block content %}
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <div class="card-title">
+                {% if error == 'error' %}
+                    <div class="alert alert-danger" role="alert">Wrong Input</div>
+                {% endif %}
+                {% if error == 'no' %}
+                    <div class="alert alert-danger" role="alert">Not Found</div>
+                {% endif %}
+            </div>
+            <div class="card">
+                <div class="card-title">
+                    <h4>多于X条评论的读者</h4>
+                </div>
+                <div class="card-body">
+                    <div class="basic-form">
+                        <form method="post" action="/more-reviews">
+                            <div class="form-group">
+                                <p class="text-muted m-b-15 f-s-12">X</p>
+                                <input name="views_amount" type="number"
+                                       class="form-control input-default" required="required">
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Library Details
+{% endblock %}
+
+{% block content %}
+    <div class="row justify-content-center">
+    <div class="col-lg-6" style="margin-bottom: 20px;">
+        <a href="/find-staffs" class="btn btn-primary btn-block">图书馆雇员查询</a>
+    </div>
+</div>
+{% for answer in answers %}
+<div class="row justify-content-center">
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-title">
+                <h4>{{ answer[0] }}</h4>
+            </div>
+            <p class="text-info ">
+               <text>Address:</text>  {{ answer[1] }}
+            </p>
+            <p class="text-info ">
+               <text>Staff Name:</text>  {{ answer[2] }}
+            </p>
+            <p class="text-info ">
+               <text>Staff Title:</text>  {{ answer[3] }}
+            </p>
+            <p class="text-info ">
+               <text>Staff Phone:</text>  {{ answer[4] }}
+            </p>
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+{% endblock %}

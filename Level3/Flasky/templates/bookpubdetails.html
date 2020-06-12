@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Detail of Books
+{% endblock %}
+{% set nav = "publish-details" %}
+{% block content %}
+    <div class="row justify-content-center">
+        <div class="col-lg-6" style="margin-bottom: 20px;">
+            <a href="/query-books-by-author" class="btn btn-primary btn-block">根据作者查询书</a>
+        </div>
+    </div>
+    {% if error == 'error' %}
+        <div class="alert alert-danger" role="alert">Wrong Input</div>
+    {% endif %}
+    {% if error == 'no' %}
+        <div class="alert alert-info" role="alert">Not Found</div>
+    {% endif %}
+    {% for detail in details %}
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-title">
+                        <h4>{{ detail[0] }}</h4>
+                    </div>
+                    <p class="text-info ">
+                        <text>Publisher:</text>
+                        {{ detail[1] }}
+                    </p>
+                    <p class="text-info ">
+                        <text>Editor:</text>
+                        {{ detail[2] }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
+{% endblock %}

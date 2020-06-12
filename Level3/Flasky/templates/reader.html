@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Reader Info
+{% endblock %}
+
+{% block content %}
+    <div class="row justify-content-center">
+        <div class="col-lg-6" style="margin-bottom: 20px;">
+            <a href="/more-reviews" class="btn btn-primary btn-block">多于X条评论的读者</a>
+        </div>
+    </div>
+    {% for reader in readers %}
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-title">
+                        <h4>{{ reader[1] }}</h4>
+                    </div>
+                    <p class="text-muted ">
+                        <text>Reader ID:</text>
+                        {{ reader[0] }}
+                    </p>
+                    <p class="text-muted ">
+                        <text>Phone:</text>
+                        {{ reader[2] }}
+                    </p>
+
+                    <p class="text-muted ">
+                        <text>Lib ID:</text>
+                        {{ reader[3] }}
+                    </p>
+
+                    <div class="button-list">
+                        <div class="btn-group">
+                            <a href="/reader-reviews?reader_id={{ reader[0] }}" class="btn btn-primary">All Reviews</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
+{% endblock %}

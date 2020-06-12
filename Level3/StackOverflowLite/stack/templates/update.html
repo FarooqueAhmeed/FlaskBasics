@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+{% block body %}
+     <div class="dashboard">
+         <div class="left">
+            <a href="{{url_for('index')}}" class="user-opt">Home</a> 
+            <a href="{{url_for('view_questions')}}" class="user-opt">View Questions</a>
+            <a href="{{url_for('ask_page')}}" class="user-opt">Ask A Question</a>
+            <a href="{{url_for('logout')}}" class="user-opt">Log Out</a>
+         </div>
+         <div class="right">
+             <div class="recent">                
+                <form action="/update_question/{{question_to_update.id}}" method="post">
+                   <h2>Ask A Question</h2>
+                   <input type="text" name="title" id="" class="myfield ask" value="{{question_to_update.title}}">
+                   <br><br>
+                   <textarea name="description" id="" cols="40" rows="20"  >
+                      {{question_to_update.content}}
+                  </textarea>
+                   <br><br>
+                   <input type="submit" value="Edit The Question" class="mybtn">
+                </form>
+             </div>
+         </div>
+     </div>
+  
+{% endblock body %}
+

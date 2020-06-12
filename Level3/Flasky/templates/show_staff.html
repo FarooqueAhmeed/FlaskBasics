@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Staff
+{% endblock %}
+
+{% block content %}
+    <div class="row justify-content-center">
+    <div class="col-lg-6" style="margin-bottom: 20px;">
+        <a href="/find-staffs" class="btn btn-primary btn-block">图书馆雇员查询</a>
+    </div>
+</div>
+{% for detail in details %}
+<div class="row justify-content-center">
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-title">
+                <h4>{{ detail[2] }}</h4>
+            </div>
+            <p class="text-info ">
+               <text>Library Name:</text>  {{ detail[0] }}
+            </p>
+            <p class="text-info ">
+               <text>Library Address:</text>  {{ detail[1] }}
+            </p>
+            <p class="text-info ">
+               <text>Title:</text>  {{ detail[3] }}
+            </p>
+            <p class="text-info ">
+               <text>Phone Number:</text>  {{ detail[4] }}
+            </p>
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+{% endblock %}
