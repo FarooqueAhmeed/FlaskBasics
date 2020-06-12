@@ -1,0 +1,6 @@
+Python 
+Flask
+MySQL
+PyMySQL
+MySQLConnection
+Flask-Bcrypt
