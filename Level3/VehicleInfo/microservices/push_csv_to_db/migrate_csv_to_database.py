@@ -1,5 +1,6 @@
 # ----------------------
 import os, csv, json, ast
+from pathlib import Path
 import mysql.connector
 # ----------------------
 def get_database_object():
@@ -20,6 +21,7 @@ def get_database_object():
 # ----------------------
 def get_file_by_year(year):
     # Return file path for given year
+    parent_path = Path.parent(os.getcwd())
     return 'master_data/'+str(year)+'.csv'
 # ----------------------
 def get_table_name(year):
@@ -49,6 +51,7 @@ def write_csv(year):
         )
 
     # Open file and traverse it row by row, writing each row to the database
+
     with open(path) as file:
         reader = csv.reader(file)
         next(reader) # Skip first row
