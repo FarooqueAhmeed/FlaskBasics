@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+欢迎页
+<a href={{ url_for('auth.login')}}> Login </a>
+<br>
+<a methods="get" href={{ url_for('auth.register') }}> Rgister </a>
+
+<a methods="get" href={{ url_for('doctor.homepage') }}> doctor </a>
+<a methods="get" href={{ url_for('nurse.homepage') }}> nurse </a>
+<a methods="get" href={{ url_for('nurse.homepageleader') }}> nurse Leader</a>
+<a methods="get" href={{ url_for('doctor.homepageleader') }}> doctor Leader </a>
+<a methods="get" href={{ url_for('patient.homepage') }}> patient </a>
+<a methods="get" href={{ url_for('auth.register') }}> Rgister </a>
+
+<a methods="get" href={{ url_for('warehouse.homepage') }}> Ware </a>
+<a methods="get" href={{ url_for('hr.homepage') }}> HR </a>
+
+</body>
+</html>
