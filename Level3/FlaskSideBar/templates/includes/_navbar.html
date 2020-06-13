@@ -1,0 +1,42 @@
+<nav style="background: linear-gradient(to right, #056FF6 0%, #000000 100%);" class="navbar navbar-expand-md" >
+<!--    <img class="navbar-brand" width="120" style="opacity: 0.6;border-radius: %;" src="/static/images/logo2.png">-->
+    <img class="navbar-brand" width="110" style="" src="/static/images/mflogo22.jpg">
+    <a class="navbar-brand text-white" href="/">NetIQ Access Manager</a>
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    <ul class="navbar-nav mr-auto">
+    </ul>
+    <ul class="nav navbar-nav navbar-right focus" >
+<!--          {% if session.logged_in %}-->
+<!--                <li><a class="nav-link text-white" href="/">{{ session.username }}</a></li>-->
+<!--                <li><a class="nav-link text-white" href="/logout">Logout</a></li>-->
+<!--          {% else %}-->
+<!--            <li><a class="nav-link text-white" href="/signup">Sign up</a></li>-->
+<!--            <li><a class="nav-link text-white" href="/login">Sign in</a></li>-->
+<!--          {% endif %}-->
+        {% if session.logged_in %}
+<!--                <li><a class="nav-link text-white" href="/">{{ session.username }}</a></li>-->
+<!--                <li><a class="nav-link text-white" href="/logout">Logout</a></li>-->
+<!--                 <li class="nav-item dropdown">-->
+            <li class="nav-item dropdown" >
+                <a class="nav-link dropdown-toggle text-white" href="/" id="dropdown01"
+                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class='fas fa-user-alt' style='font-size:16px'></i>&nbsp;&nbsp;{{ session.name }}</a>
+                    <div  class="dropdown-menu" aria-labelledby="dropdown01">
+                      <a style="font-weight: 500;" class="dropdown-item" href="/profile">Profile</a>
+                      <a style="font-weight: 500" class="dropdown-item" href="/old_pwd_change">Change password</a>
+                    </div>
+            </li>
+        <li><a class="nav-link text-white" href="/logout">| &nbsp;&nbsp; logout&nbsp;&nbsp;<i class='fas fa-sign-out-alt' style='font-size:16px'></i></a></li>
+          {% else %}
+            <li><a class="nav-link text-white" href="/signup">Sign up</a></li>
+            <li><a class="nav-link text-white" href="/login">Sign in</a></li>
+          {% endif %}
+     </ul>
+    </div>
+</nav>
+<style>
+    focus {
+    width: auto;
+    position: relative;
+}
+</style>

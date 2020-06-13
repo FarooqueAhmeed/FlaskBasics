@@ -1,0 +1,155 @@
+<!-- This line loads base.html which is present on every page -->
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+<!-- Page Content -->
+{% block content %}
+    <div class="container py-5">
+        <!-- Multicity Form -->
+        <h3 class="text-center">Multi-City</h3>
+        <p class="text-center">Please use the following form to search for multi-city flights.<br>Required fields are marked with *</p>
+        <div class="row justify-content-end pb-3 pl-5">
+            <div class="col-md-10">
+                <form method="POST">
+                    {{ form.hidden_tag() }}
+                    <!-- Subform -->
+                    <div id="subforms-container" class="pt-4">
+                        {% for subform in form.flights %}
+                            <div id="flights-{{ loop.index0 }}-form" class="subform" data-index="{{ loop.index0 }}">
+                                <h5 id="flightHeading">Flight {{ loop.index }}</h5>
+                                <div class="row">
+                                    <div class="form-group col-md-3">
+                                        {{ wtf.form_field(subform.fromCity, class='form-control', placeholder='') }}
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        {{ wtf.form_field(subform.toCity, class='form-control', placeholder='') }}
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        {{ wtf.form_field(subform.departDate, class='form-control', min="0001-01-01", max="9999-12-31", placeholder='') }}
+                                    </div>
+                                    <div class="form-group col-md-3 pt-4">
+                                        <button class="btn btn-warning btn-md my-2 btn-block remove is-hidden" type="button">Remove</button>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-3">
+                            {{ wtf.form_field(form.passengers, class='form-control', placeholder='') }}
+                        </div>
+                        <div class="form-group col-md-3 pt-4">
+                            <button class="btn btn-warning btn-md my-2 btn-block add" type="button">Add Flight</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-9">
+                            {{ wtf.form_field(form.submit, class='form-control btn-warning my-2', placeholder='') }}
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+        <!-- Dynamic WTF Forms -->
+        <script>
+            // Adjust the indices of form fields when removing items
+            function adjustIndices(removedIndex) {
+                var $forms = $('.subform');
+                $forms.each(function(i) {
+                    var $form = $(this);
+                    var index = parseInt($form.attr('data-index'));
+                    var newIndex = index - 1;
+                    if (index < removedIndex) {
+                        // Skip
+                        return true;
+                    }
+                    // Change ID in form itself
+                    $form.attr('id', $form.attr('id').replace(index, newIndex));
+                    $form.attr('data-index', newIndex);
+                    // Change IDs in form inputs
+                    $form.find('label').each(function(idx) {
+                    var $item = $(this);
+                        $item.attr('for', $item.attr('for').replace(index, newIndex));
+                    });
+                    $form.find('select').each(function(idx) {
+                        var $item = $(this);
+                        $item.attr('id', $item.attr('id').replace(index, newIndex));
+                        $item.attr('name', $item.attr('name').replace(index, newIndex));
+                    });
+                    $form.find('input').each(function(idx) {
+                        var $item = $(this);
+                        $item.attr('id', $item.attr('id').replace(index, newIndex));
+                        $item.attr('name', $item.attr('name').replace(index, newIndex));
+                    });
+                    $form.find('h5').each(function(idx) {
+                        var $item = $(this);
+                        $item.text("Flight " + (newIndex + 1));
+                    });
+                });
+            }
+            
+            // Add a new form
+            function addForm() {
+                var $templateForm = $('#flights-0-form');
+                if (!$templateForm) {
+                    console.log('[ERROR] Cannot find template');
+                    return;
+                }
+                // Get Last index
+                var $lastForm = $('.subform').last();
+                var newIndex = 0;
+                if ($lastForm.length > 0) {
+                    newIndex = parseInt($lastForm.attr('data-index')) + 1;
+                }
+                // Minimum and maximum number of subforms
+                if (newIndex > 4 || newIndex < 1) {
+                    console.log('[WARNING] Reached minimum or maximum number of elements');
+                    return;
+                }
+                // Add elements
+                var $newForm = $templateForm.clone();
+                $newForm.attr('id', $newForm.attr('id').replace('0', newIndex));
+                $newForm.attr('data-index', newIndex);
+                $newForm.find('label').each(function(idx) {
+                    var $item = $(this);
+                    $item.attr('for', $item.attr('for').replace('0', newIndex));
+                });
+                $newForm.find('select').each(function(idx) {
+                    var $item = $(this);
+                    $item.attr('id', $item.attr('id').replace('0', newIndex));
+                    $item.attr('name', $item.attr('name').replace('0', newIndex));
+                });
+                $newForm.find('input').each(function(idx) {
+                    var $item = $(this);
+                    $item.attr('id', $item.attr('id').replace('0', newIndex));
+                    $item.attr('name', $item.attr('name').replace('0', newIndex));
+                });
+                $newForm.find('h5').each(function(idx) {
+                    var $item = $(this);
+                    $item.text("Flight " + (newIndex + 1));
+                });
+                // Append
+                $('#subforms-container').append($newForm);
+                $newForm.addClass('subform');
+                $newForm.find('.remove').removeClass('is-hidden');
+                $newForm.find('.remove').click(removeForm);
+            }
+            
+            // Remove a form
+            function removeForm() {
+                var $removedForm = $(this).closest('.subform');
+                var removedIndex = parseInt($removedForm.data('index'));
+                $removedForm.remove();
+                // Update indices
+                adjustIndices(removedIndex);
+            }
+            
+            // Make functions avalible on the page
+            $(document).ready(function() {
+                $('.add').click(addForm);
+                $('.remove').click(removeForm);
+            });
+        </script>
+    </div>
+{% endblock %}

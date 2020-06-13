@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+
+<div class="content-heading clearfix">
+    <div class="heading-left">
+        <h1 class="page-title">Title</h1>
+        <p class="page-subtitle">Sub Title</p>
+    </div>
+    <ul class="breadcrumb">
+        <li>Home</li>
+        <li id="demo" class="active">Detail View</li>
+    </ul>
+</div>
+
+<div class="panel">
+    <div class="panel-heading">
+        <h3 class="panel-title">Select Date To Display</h3>
+    </div>
+    <div class="panel-body">
+        <form method="GET" action="/detail">
+            <label>Date Of Entry</label>
+            <br>
+            <input id="filter_picker" name="filter_date" data-provide="datepicker" data-date-autoclose="true"
+                class="form-control" data-date-format="yyyy-mm-dd">
+            <br>
+            <button class="btn btn-primary">submit</button>
+        </form>
+    </div>
+</div>
+
+{% include 'tables/GL_PDCA.html' %}
+{% include 'tables/TL_PDCA_2.html' %}
+{% include 'tables/TL_PDCA.html' %}
+
+{% endblock %}
+
+{% block other_scripts %}
+
+<script>
+    let input_elements = document.getElementsByTagName("input")
+    for (let input_index in input_elements) {
+        let input_element = input_elements[input_index]
+        if (input_element.id != "filter_picker") {
+            input_element.disabled = true
+            input_element.readOnly = true
+        }
+    }
+</script>
+<style>
+    input:not(#filter_picker),
+    textarea {
+        background: transparent !important;
+        border: none !important;
+    }
+</style>
+
+{% endblock %}

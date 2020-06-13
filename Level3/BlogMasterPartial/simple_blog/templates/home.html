@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block body %}
+<div class="row">
+<div class="col md-4 ">
+    <ul class="list-group">
+        <li class="list-group-item bg-primary"><a href="{{url_for('create_post')}}"><i class="fa fa-pencil fa-2x"></i> Create A Post</a></li>
+        <li class="list-group-item bg-primary"><a href=""> <i class="fa fa-eye fa-2x"></i>  View Your Posts</a></li>
+        <li class="list-group-item bg-primary"><a href="{{ url_for('logout') }}"><i class="fa fa-sign-out fa-2x"></i> Logout</a></li>
+    </ul>
+</div>
+<div class="col col-md-10">
+
+{% with messages = get_flashed_messages() %}    
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+{% if  posts %}
+<table class="table table-striped">
+    <thead class="bg-primary">
+       <tr>
+           <th>Title</th>
+           <th>Date Posted</th>
+           <th>Actions</th>
+       </tr>
+    </thead>
+    <tbody>
+        <tr>
+           {% for post in posts %}
+           <td>{{post.title}}</td>
+           <td>{{ post.date_created.strftime("%D %M %Y")}}</td>
+           <td class=""><a href="/update/{{post.id}}" class=""><i class="fa fa-edit fa-2x success"></i></a></td>
+           <td class=""><a href="/delete-post/{{post.id}}"><i class="fa fa-trash fa-2x danger" ></i></a></td>
+       </tr>
+       {% endfor %}
+     
+    </tbody>
+         
+ </table> 
+    
+{% else %}
+    <p>No posts yet</p>
+{% endif %}
+    
+</form>
+</div>
+</div>
+{% endblock body %}
+    

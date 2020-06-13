@@ -1,0 +1,91 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+    <h2>Dashboard <small> Hello! {{ session.name }} !</small></h2>
+    <hr>
+    <br>
+        <h3>Team updates</h3>
+    <hr>
+    <form class="form-inline"  action="/send_mail_dashboard" method="post">
+          <a class="btn btn-success" href="/add_update"> + Add Updates</a>
+         <input class="btn btn-primary"  style="margin:10px" onclick="alert('Mail initiated successfully')" type="submit" value="SendMail" >
+    </form>
+    <hr>
+    <table class="table table-striped">
+        <tr style="background: linear-gradient(to right, #056FF6 0%, #000000 100%);color:white;">
+            <th>S.No</th>
+            <th>Name</th>
+            <th>Created by</th>
+            <th>Created Date</th>
+            <th>Last updated date</th>
+            <th style="text-align:center" width="100px">Action</th>
+<!--            <th></th>-->
+        </tr>
+        {% set count = [1] %}
+        {% for tupdate in tupdates %}
+            <tr>
+                <td>{{ count }}</td>
+                <td>{{ tupdate.name }}</td>
+                <td>{{ tupdate.author }}</td>
+                <td>{{ tupdate.date_posted }}</td>
+                <td>{{ tupdate.date_updated }}</td>
+<!--                <td><a href="edit_update/{{ tupdate.id }}" class="btn btn-info">Edit</a></td>-->
+<!--                <a href="#" class="btn btn-danger">Delete</a>-->
+                <td>
+<!--                    <form action="{{ url_for('delete_update', id=tupdate.id)}}" method="post">-->
+<!--                        <input type="hidden" name="method" value="DELETE">-->
+<!--                        <input type="submit" value="Delete" class="btn btn-danger">-->
+<!--                    </form>-->
+                     <form style="text-align:center" >
+                         <a href="edit_update/{{ tupdate.id }}" style="color: inherit;"><i class='fas fa-user-edit' style='font-size:18px'></i></a>
+                         <a href="delete_update/{{ tupdate.id }}" style="color: red;padding-left:20px"><i class='fas fa-trash-alt' style='font-size:18px'></i></a>
+                     </form>
+                </td>
+            </tr>
+        {% if count.append(count.pop() + 1) %}{% endif %} {# increment count by 1 #}
+        {% endfor %}
+    </table>
+    <hr>
+    <br>
+    <br>
+
+    <h3>Articles</h3>
+    <hr>
+    <a class="btn btn-success" href="/add_article"> + Add Article</a>
+    <hr>
+    <table class="table table-striped">
+        <tr style="background: linear-gradient(to right, #056FF6 0%, #000000 100%);color:white;">
+            <th>S.No</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Created date</th>
+            <th>Last updated date</th>
+            <th style="text-align:center" width="100px" >Action</th>
+<!--            <th></th>-->
+        </tr>
+        {% set count = [1] %}
+        {% for article in articles %}
+            <tr>
+                <td>{{ count }}</td>
+                <td>{{ article.title }}</td>
+                <td>{{ article.author }}</td>
+                <td>{{ article.date_posted }}</td>
+                <td>{{ article.date_updated }}</td>
+<!--                <td><a href="edit_article/dashboard/{{ article.id }}" class="btn btn-info">Edit</a></td>-->
+<!--                <a href="#" class="btn btn-danger">Delete</a>-->
+                <td>
+<!--                    <form action="{{ url_for('delete_article', id=article.id)}}" method="post">-->
+<!--                        <input type="hidden" name="method" value="DELETE">-->
+<!--                        <input type="submit" value="Delete" class="btn btn-danger">-->
+<!--                    </form>-->
+                     <form style="text-align:center" >
+                         <a href="edit_article/dashboard/{{ article.id }}" style="color: inherit;"><i class='fas fa-user-edit' style='font-size:18px'></i></a>
+                         <a href="delete_article/{{ article.id }}" style="color: red;padding-left:20px"><i class='fas fa-trash-alt' style='font-size:18px'></i></a>
+                     </form>
+                </td>
+            </tr>
+        {% if count.append(count.pop() + 1) %}{% endif %} {# increment count by 1 #}
+        {% endfor %}
+    </table>
+    <hr>
+{% endblock%}

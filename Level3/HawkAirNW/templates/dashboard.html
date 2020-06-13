@@ -1,0 +1,204 @@
+<!-- This line loads base.html which is present on every page -->
+{% extends "base.html" %}
+
+<!-- Page Content -->
+{% block content %}
+    <div class="container py-5">
+        
+        <!-- Flash Messages Here -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="row">
+                        <div class="col">
+                            <div class="alert alert-{{category}} alert-dismissible fade show" id="noPrintAlert" role="alert">
+                                {{ message }}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        
+        <!-- Dashboard -->
+        <div class="row">
+            <div class="col-md-8">
+                {% if trips %}
+                    <!-- Flights list -->
+                    <h3>Here is a list of your flights:</h3>
+                    <hr>
+                    {% set counter = [0] %}
+                    {% for key, value in trips.items() %}
+                        <div class="row">
+                            <div class="col">
+                                <h4><span class="badge badge-warning mt-1 mb-2">Booking ID: {{ key }}</span></h4>
+                                {% for v in value %}
+                                <div class="card">
+                                    <h5 class="card-header">Flight {{ loop.index }}</h5>
+                                    <table class="table" style="table-layout: fixed;">
+                                        <tr>
+                                            <th>From</th>
+                                            <th>To</th>
+                                            <th>Date</th>
+                                            <th>Departure Time</th>
+                                        </tr>
+                                        <tr>
+                                            <td>{{ v[0] }}</td>
+                                            <td>{{ v[1] }}</td>
+                                            <td>{{ v[2] }}</td>
+                                            <td>{{ v[3] }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Class</th>
+                                            <th>Passenger</th>
+                                            <th>Flight Number</th>
+                                            <th>Duration</th>
+                                        </tr>
+                                        <tr>
+                                            <td>{{ v[4] }}</td>
+                                            <td>{{ v[5] }}</td>
+                                            <td>{{ v[6] }}</td>
+                                            <td>{{ v[7] }}</td>
+                                        </tr>
+                                    </table>
+                                    <div class="card-footer text-right">
+                                        <!-- Change flight buttom -->
+                                        <button type="button" class="btn btn-warning btn-sm px-3" data-toggle="modal" data-target="#changeModal-{{ counter[0] }}">Change</button>
+                                        
+                                        <!-- Change flight modal -->
+                                        <div class="modal fade" id="changeModal-{{ counter[0] }}" role="dialog">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <form method="POST" action="{{ url_for('changeBooking', bookingID=key, flightID=v[6], passengerName=v[5], fromCity=v[0], toCity=v[1], date=v[2]) }}">
+                                                        <div class="modal-header text-center">
+                                                            <h5 class="modal-title w-100">Change Flight</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body text-center">
+                                                            <p>Are you sure you want to change your flight?<br>If yes, then please pick a date for your new flight:</p>
+                                                            <div class="row justify-content-center">
+                                                                <div class="form-group">
+                                                                    <div class="form-group required">
+                                                                        <input class="form-control" min="{{ minChangeBookingDate }}" max="{{ maxChangeBookingDate }}" name="newDate" required="1" type="date">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer justify-content-center">
+                                                            <input class="btn btn-warning" type="submit" value="Yes">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Cancel flight buttom -->
+                                        <button type="button" class="btn btn-danger btn-sm px-3" data-toggle="modal" data-target="#cancelModal-{{ counter[0] }}">Cancel</button>
+                                        
+                                        <!-- Cancel flight modal -->
+                                        <div class="modal fade" id="cancelModal-{{ counter[0] }}" role="dialog">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header text-center">
+                                                        <h5 class="modal-title w-100">Cancel Flight</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body text-center">
+                                                        Are you sure you want to cancel your flight?
+                                                    </div>
+                                                    <div class="modal-footer justify-content-center">
+                                                        <a href="{{ url_for('deleteBooking', bookingID=key, flightID=v[6], passengerName=v[5]) }}" class="btn btn-danger">Yes</a>
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p>
+                                {% if counter.append(counter.pop() + 1) %}{% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <h3>You currently don't have any purchased flighs.<br>Click <a href="/" class="badge badge-warning">Here</a> to buy a flight!</h3>
+                    <hr>
+                    <img class="mx-auto d-block pt-4" src="/static/images/confused.png">
+                {% endif %}
+            </div>
+            
+            <!-- Profile -->
+            <div class="col-md-4">
+                <div class="jumbotron">
+                    <div class="text-center">
+                        <img class="avatar rounded-circle img-thumbnail" src="/static/images/avatar.png">
+                        <p></p>
+                        <h5>{{ info.Username }}</h5>
+                        <p></p>
+                    </div>
+                    <ul class="list-group">
+                        <li class="list-group-item active"><strong>Profile</strong></li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <a><strong>UserID: </strong>{{ info.UserID }}</a>
+                        </li>
+                        {% if info.Title != '' %}
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <a><strong>Title: </strong>{{ info.Title }}</a>
+                        </li>
+                        {% endif %}
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <a><strong>First Name: </strong>{{ info.FirstName }}</a>
+                        </li>
+                        {% if info.MiddleName != '' %}
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <a><strong>Middle Name: </strong>{{ info.MiddleName }}</a>
+                        </li>
+                        {% endif %}
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <a><strong>Last Name: </strong>{{ info.LastName }}</a>
+                        </li>
+                        {% if info.PreferredName != '' %}
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <a><strong>Preferred Name: </strong>{{ info.PreferredName }}</a>
+                        </li>
+                        {% endif %}
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <a><strong>Sex: </strong>{{ info.Sex }}</a>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <a><strong>Date of Birth: </strong>{{ info.DOB }}</a>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <a><strong>Street: </strong>{{ info.Street }}</a>
+                        </li>
+                        {% if info.State != '' %}
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <a><strong>City: </strong>{{ info.City }}, {{ info.State }} {{ info.ZipCode }}</a>
+                        </li>
+                        {% else %}
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <a><strong>City: </strong>{{ info.City }}, {{ info.ZipCode }}</a>
+                        </li>
+                        {% endif %}
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <a><strong>Phone: </strong>{{ info.Phone }}</a>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <a><strong>Email: </strong>{{ info.Email }}</a>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <a><strong>Earned Miles: </strong>{{ info.Miles }}</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

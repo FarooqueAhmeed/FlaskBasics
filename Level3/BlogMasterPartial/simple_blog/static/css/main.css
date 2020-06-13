@@ -1,0 +1,64 @@
+*{
+    font-family: 'montserrat',sans-serif ;
+}
+
+.media{
+    background-color:rgba(192, 215, 238, 0.219);
+    height: 200px;
+    box-shadow: 5px 5px 5px 5px rgba(70, 155, 240, 0.37); 
+    padding: 20px;
+}
+.options{
+    background-color: lightgray;
+}
+.jumbotron {
+    border-radius: 7px;
+}
+.footer{
+    color: white;
+    padding: 20px;
+}
+.container{
+    min-height: 500px;   
+}
+.success{
+    color: green;
+}
+.danger{
+    color: red;
+}
+.list-group-item a{
+    color: white;
+}
+td i{
+    color: white;
+}
+.loginform{
+    width: 40%;
+    margin: auto;
+    border: 1px rgba(0, 0, 0, 0.096) solid;
+    padding: 20px;
+}
+.head{
+    
+    border-radius: 3px;
+}
+.main{
+    padding: 20px;
+    margin-top:70px ;
+}
+.error{
+    color: red;
+}
+th{
+    color: white;
+}
+
+.fixed{
+    top: 0;
+    left: 0;
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+    height: px;
+}

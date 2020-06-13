@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+
+<div class="content-heading clearfix">
+    <div class="heading-left">
+        <h1 class="page-title">Title</h1>
+        <p class="page-subtitle">Sub Title</p>
+    </div>
+    <ul class="breadcrumb">
+        <li>Home</li>
+        <li id="demo" class="active">Create View</li>
+    </ul>
+</div>
+
+{% include 'tables/GL_PDCA.html' %}
+{% include 'tables/TL_PDCA_2.html' %}
+{% include 'tables/TL_PDCA.html' %}
+
+<div>
+    <button id="page_submit_button" class="btn btn-primary btn-lg">Submit Page</button>
+</div>
+
+{% endblock %}
+
+{% block other_scripts %}
+<script src="/static/js/create.js"></script>
+{% endblock %}

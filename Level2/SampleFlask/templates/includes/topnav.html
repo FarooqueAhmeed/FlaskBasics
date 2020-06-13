@@ -1,0 +1,75 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="brand">
+        <a href="/tvs/paintshop">
+            <img src="/static/img/logo-white.png" alt="TVS Logo" class="img-responsive logo" />
+        </a>
+    </div>
+    <div class="container-fluid">
+
+        <form class="navbar-form navbar-left search-form">
+            <input type="text" value="" class="form-control" placeholder="Search dashboard..." />
+            <button type="button" class="btn btn-default">
+                <i class="fa fa-search"></i>
+            </button>
+        </form>
+
+        <div id="navbar-menu">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="/create" class="btn-toggle-rightsidebar">
+                        Create View
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/detail" class="btn-toggle-rightsidebar">
+                        Detail View
+                    </a>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle icon-menu" data-toggle="dropdown">
+                        <i class="ti-bell"></i>
+                        <span class="badge bg-danger">1</span>
+                    </a>
+                    <ul class="dropdown-menu notifications">
+                        <li>You have 1 new notifications</li>
+                        <li>
+                            <a href="#" class="notification-item">
+                                <i class="fa fa-check custom-bg-green"></i>
+                                <p>
+                                    <span class="text">Your request has been approved</span>
+                                    <span class="timestamp">3 days ago</span>
+                                </p>
+                            </a>
+                        </li>
+                        <li><a href="#" class="more">See all notifications</a></li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" id="tour-help" class="dropdown-toggle" data-toggle="dropdown"><i class="ti-help"></i>
+                        <span class="hide">Help</span></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="#"><i class="ti-direction"></i> Basic Use</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <img src="/static/img/user.png" alt="Avatar" />
+                        <span>Forms</span>
+                    </a>
+                    <ul class="dropdown-menu logged-user-menu">
+                        <li>
+                            <a href="#"><i class="ti-power-off"></i> <span>Logout</span></a>
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>

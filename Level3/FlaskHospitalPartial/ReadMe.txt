@@ -9,7 +9,7 @@ MySQL Server 8.0.19
 
 Instructions:
 1- Download neccesary python libraries
-2- Run scripts in the 'sql' file on mysql
+2- Run scripts in the 'sql' file on mysql. First DDL.sql then insertions.sql.
 3- Go to app.py at lines 8-13 change user and password parameters to
    your mysql server settings
 4-Run app.py and go to the running address in any web browser

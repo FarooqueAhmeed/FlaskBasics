@@ -1,0 +1,127 @@
+/** Navigation spacing **/
+.nav-pills a {
+    margin-left: 0px;
+    margin-right: 10px;
+}
+
+/** FontAwesome padding **/
+i {
+  margin-right: 2px;
+}
+
+/** Minimum size of the page content **/
+body > div.container {
+    min-height:700px !important;
+}
+
+/** Active pills are gold **/
+.nav-pills .nav-link.active, .navbar-dark .navbar-nav .nav-link.active, .nav-pills .show > .nav-link, .navbar-dark .navbar-nav .show > .nav-link, .dropdown-item:active {
+    background-color: #FFCE07;
+    color: #262626;
+}
+
+/** Other pills are grey **/
+.nav-pills .nav-link {
+    background-color: #262626;
+    color: #C9C9C9
+}
+
+/** Buttons are gold **/
+.btn-warning {
+    background-color: #FFCE07;
+    color: #262626;
+    border-color: #FFCE07;
+}
+
+/** Badges are gold **/
+.badge-warning {
+    background-color: #FFCE07;
+    color: #262626;
+    font-weight: 500;
+    vertical-align: middle;
+    margin-top: -0.3em;
+}
+
+/** Links are gold **/
+a, a:hover {
+    color: #FFCE07;
+}
+
+/** List groups headers are gold **/
+.list-group-item.active {
+    background-color: #FFCE07;
+    border-color: #FFCE07;
+    color: #262626
+}
+
+/** Group forms spacing **/
+.form-group {
+    margin-bottom: 10px;
+}
+
+/** Jumbotron **/
+.jumbotron {
+    background-color: #F4F4F4;
+    padding-top: 30px;
+    padding-right: 30px;
+    padding-bottom: 30px;
+    padding-left: 30px;
+}
+
+/** Jumbotron your trip fix **/
+#your-trip > div, #flight-status-date > div {
+    background-color: #F4F4F4;
+    padding-top: 30px;
+    padding-right: 30px;
+    padding-bottom: 40px;
+    padding-left: 30px;
+}
+
+/** Errors in the forms are red **/
+.has-error > label, .has-error > p, .has-error > input, .has-error > select {
+    color: red;
+}
+
+/** Errors in the forms are red **/
+.has-error > input, .has-error > select, .has-error > textarea {
+    border: 1px solid red;
+}
+
+/** Footer Background **/
+#footer {
+    background-color: #262626;
+    color: #C9C9C9;
+}
+
+/** Footer Headings **/
+#footerHeading {
+    color: #FFFFFF;
+}
+
+/** Footer Address and Text **/
+#footerText, #footerAddress {
+    color: #C9C9C9;
+}
+
+/** Footer Lines and Copyrights **/
+#copyright, #footerLine {
+    background-color: #FFCE07;
+    color: #262626;
+}
+
+/** Printing **/
+@media print {
+    #header, #nextSteps, #footer, #copyright, #noPrintAlert { 
+        display: none !important;
+    }
+    
+    body {
+        -webkit-print-color-adjust: exact;
+        color-adjust: exact !important;
+    }
+}
+
+/** Hidden elements **/
+.is-hidden {
+    display: none;
+}
