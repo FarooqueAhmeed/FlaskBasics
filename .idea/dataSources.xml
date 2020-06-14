@@ -75,5 +75,11 @@
         </library>
       </libraries>
     </data-source>
+    <data-source source="LOCAL" name="cards.db" uuid="f13c310d-4a9b-492e-8cc3-d47edbf8de48">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/Level3/FlaskCards/cards.db</jdbc-url>
+    </data-source>
   </component>
 </project>

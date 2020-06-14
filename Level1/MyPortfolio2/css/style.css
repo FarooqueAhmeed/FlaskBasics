@@ -1,0 +1,274 @@
+* {
+  font-family: "Poppins", sans-serif;
+  /* outline: black 1px solid; */
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+.main-img {
+}
+
+body {
+  background: url(../img/cover.jpeg) no-repeat center center/cover;
+  /* background-color: black; */
+  color: rgb(243, 61, 61);
+}
+ul {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+
+.active {
+  border-bottom: 2px solid rgba;
+}
+.white-text {
+  color: white;
+}
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  margin-top: 20px;
+  text-align: center;
+  z-index: 2;
+  padding: 5%;
+  /* background-color: rgba(0, 0, 0, 0.582); */
+  height: 20%;
+}
+.main {
+  height: 100vh;
+  /* padding: 20%; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.589);
+  text-transform: uppercase;
+}
+
+.name {
+  font-size: 3rem;
+  margin-top: 20px;
+  text-transform: capitalize;
+}
+.sub-name {
+  font-size: 2rem;
+}
+.contacts {
+  margin-top: 20px;
+}
+.nav {
+  /* padding: 20px; */
+}
+
+.mybtn {
+  /* background-color: rgba(0, 0, 0, 0.342);*/
+  padding: 20px;
+  border-radius: 30px;
+  color: rgb(243, 61, 61);
+  /* border: 2px solid white; */
+  font-weight: bold;
+}
+.mybtn:hover {
+  background-color: rgba(255, 255, 255, 0.13);
+  color: rgb(243, 61, 61);
+  border: 2px solid rgb(243, 61, 61);
+}
+
+.red-text {
+  color: rgb(243, 61, 61);
+}
+.blu-text {
+  color: dodgerblue;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.about {
+  padding: 10%;
+  margin: ;
+  min-height: 100vh;
+  background-color: rgba(0, 0, 0, 0.589);
+  color: rgb(243, 61, 61);
+  font-size: 1em;
+}
+
+.card {
+  box-shadow: 3px 3px 3px rgb(243, 61, 61);
+  padding: 20px;
+  border-radius: 7px;
+
+  color: rgb(243, 61, 61);
+}
+
+.card-about:hover {
+  transform: scale(1.5);
+}
+.icon {
+  padding: 20px;
+}
+
+.skills {
+  display: flex;
+}
+
+.contacts {
+  text-align: center;
+  margin-top: 5%;
+  /* background-color: black; */
+  padding: 10px;
+  border-radius: 50px;
+  width: 50%;
+}
+
+.contact-icon {
+  margin: 5%;
+  color: white;
+}
+
+.contact-icon:hover {
+  color: rgba(255, 255, 255, 0.377);
+}
+.skill-card {
+  padding: 20px;
+}
+.projects {
+  padding: 0%;
+  min-height: 100vh;
+  background-color: rgba(0, 0, 0, 0.589);
+  color: white;
+}
+.list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 2%;
+}
+.personal-info {
+  font-size: 1.2rem;
+}
+
+.card-img {
+  width: 100%;
+}
+.card-heading {
+  padding: 20px;
+}
+.card-desc {
+  padding: 20px;
+  /* display: none; */
+}
+.proj-card {
+  width: 30%;
+  margin: 10px;
+  margin-top: 20px;
+}
+.center {
+  text-align: center;
+  padding: 20px;
+}
+
+.opt {
+  display: flex;
+  text-transform: uppercase;
+  font-weight: bold;
+  justify-content: space-evenly;
+}
+
+footer {
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.808);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* justify-content: space-evenly; */
+}
+.email {
+  font-size: 2rem;
+}
+.left-desc {
+  padding: 5%;
+}
+
+@media (max-width: 600px) {
+  body {
+    background: black;
+    padding: 0;
+    margin: 0;
+  }
+  .main {
+    display: block;
+    height: 100vh;
+    padding: 20px;
+    margin: 20px;
+    width: 80%;
+  }
+
+  .active {
+    background-color: red;
+  }
+  .contacts {
+    display: flex;
+    flex-direction: row;
+  }
+  .nav {
+    display: none;
+  }
+
+  .name {
+    font-size: 1.5rem;
+  }
+  .sub-name {
+    font-size: 2rem;
+  }
+
+  .card {
+    padding: 0px;
+    width: 100%;
+  }
+
+  .contacts {
+    display: flex;
+    justify-content: space-between;
+  }
+  .contacts a {
+    margin: 20px;
+  }
+
+  .card {
+    width: 100%;
+  }
+
+  .skills {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .icon {
+    text-align: center;
+  }
+
+  .about {
+    padding: 10px;
+    margin-top: 20px;
+  }
+  footer {
+    padding: 1%;
+  }
+
+  .email {
+    text-align: center;
+    font-size: 1.5rem;
+  }
+}

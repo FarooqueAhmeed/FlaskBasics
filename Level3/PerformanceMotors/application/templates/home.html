@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+{% block content %}
+	{% for post in posts %}
+		
+		<article class="media content-section">
+			
+			<div class="media-body">
+		   			 <div class="article-metadata">
+		   			 <br>
+		    		<div class="carimages">
+				    <img width="100%" src="{{ url_for('static',filename='carimages/'+post.image) }}" class="img-responsive" alt="Responsive image">
+		    		</div>
+		    		<br>
+		    		</div>
+
+				<h2><a class="article-title" href="{{ url_for('advert', adv_id=post.adv_id) }}">{{ post.car_title }} : £{{ post.price }}</a></h2>
+		    		<img class ="rounded-circle article-img" src="{{ url_for('static',filename='profileimage/'+post.author.profile_image) }}">
+				<a class="mr-2,mt-3" href="#">{{ post.author.username }}</a>
+				<small class="text-muted">Date Posted: {{ post.date_adv.strftime('%Y-%m-%d') }}</small>
+				<br><br>
+				     <p class="article-content">Car Mileage : {{ post.mileage }}</p>
+				      <p class="article-content">Car Location : {{ post.location }}</p>
+		  	</div>
+
+		</article>
+
+
+	{% endfor %}
+{% endblock content %}

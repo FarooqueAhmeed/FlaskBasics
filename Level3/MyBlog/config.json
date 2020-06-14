@@ -1,0 +1,26 @@
+{
+  "params": {
+    "local_server": "True",
+    "local_uri": "mysql://root:yaKhudaKhair@localhost/sampledb2",
+    "prod_uri": "mysql://root:yaKhudaKhair@localhost/sampledb2",
+    "fb_uri": "https://facebook.com/portfolio",
+    "tw_uri": "https://twitter.com/portfolio",
+    "gh_uri": "https://github.com/portfolio",
+    "blog_name": "Poems Thunder!",
+    "tag_line": "“Poetry is emotion put into measure. The emotion must come by nature, but the measure can be acquired by art.”",
+    "gmail-user": "example@gmail.com",
+    "gmail-password": "example@2008",
+    "about_text": "Poetry is so important because it helps us understand and appreciate the world around us. Poetry’s strength lies in its ability to shed a “sideways” light on the world, so the truth sneaks up on you. No question about it. Poetry teaches us how to live.",
+    "no_of_posts":2,
+    "login_image": "login.svg",
+    "admin_user": "example",
+    "admin_password":"example",
+    "upload_location":"d:\\uploads"
+
+
+
+  }
+
+
+
+}
