@@ -1,4 +1,4 @@
-#Curated projects for Farooque Ahmed to learn Web Programming
+#Curated projects for **_Farooque Ahmed_** to learn Web Programming
 
 
 https://flask-sqlalchemy.palletsprojects.com/en/2.x/config/
@@ -7,8 +7,9 @@ https://flask-sqlalchemy.palletsprojects.com/en/2.x/config/
 
 The database URI that should be used for the connection. Examples:
 
-* sqlite:////tmp/test.db
+* sqlite://tmp/test.db
 
 * mysql://username:password@server/db
 
 ###Feel free to ping me in case of any issue.
+
