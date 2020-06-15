@@ -52,6 +52,13 @@ class Add(Resource):
             }
             return jsonify(retmap)
 
+    def get(self):
+            retmap = {
+                'Message': "Hello",
+                'Status Code': 200,
+            }
+            return jsonify(retmap)
+
 
 class Subtract(Resource):
     def post(self):

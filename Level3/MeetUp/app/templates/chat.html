@@ -1,0 +1,167 @@
+{% extends '_layout.html' %}
+{% block body %}
+<!-- Java script for socketio control -->
+<script type="text/javascript">
+$(document).ready(function(){
+
+    var converter = new showdown.Converter();
+    const messages = document.getElementById('messages');
+
+    function scrollToBottom() {
+        messages.scrollTop = messages.scrollHeight;
+    }
+    scrollToBottom();
+
+    //Space ==================================================
+
+    var pageURL = window.location.href;
+    var room = pageURL.substr(pageURL.lastIndexOf('/') + 1);
+    var user = "{{username}}";
+    var float = "left";
+
+    var socket = io.connect(location.protocol + '//' + document.domain + ':' + location.port);
+
+    function get_msg_html(name, msg, side) {
+        var msg_templet = `
+            <div class="card message mx-auto">
+                 <div class="card-body">
+                     <h6 class="card-subtitle mb-2 text-muted text-${side}">${name}</h6>
+                     <p class="card-text float-${side}">${msg}</p>
+                 </div>
+            </div>
+            <br>
+            `;
+        return msg_templet;
+        }
+
+    socket.on('connect', function() {
+        console.log("Connected");
+        socket.emit('join',room);
+	});
+
+    socket.on('msg', function(msg,usr) {
+        shouldScroll = messages.scrollTop + messages.clientHeight === messages.scrollHeight;
+        if (usr == user){
+            float = "right";
+        } else{
+            float = "left";
+        }
+		$("#messages").append(get_msg_html(usr,msg,float));
+        if (shouldScroll) {
+            scrollToBottom();
+            }
+	});
+
+    $('#submit').on('click', function() {
+        var msg = $('#message').val();
+        msg = converter.makeHtml(msg);
+		socket.emit('msg', msg, user, room);
+		$('#message').val('');
+	});
+
+    $('#clear').on('click', function() {
+        socket.emit('clear', user, room);
+        window.setTimeout(location.reload(),1000);
+    });
+})
+</script>
+<div class="container animated fadeInDown">
+    <header class="chat-nav primary-color mx-auto text-center">
+        <h1 style="color:white;opacity:0.8;">MeetToday: {{id}}</h1>
+    </header>
+</div>
+<br>
+<br>
+<div class="container chat">
+    <div class="row chat-messages">
+        <div class="col-sm-6 chat-messages animated fadeInLeft">
+            <br>
+            <h1>&nbsp Listen</h1>
+            <div id="messages" class="messages">
+                <br>
+                <div class="card message mx-auto">
+                    <div class="card-body">
+                        <h6 class="card-subtitle mb-2 text-muted text-left">admin</h6>
+                        <p class="card-text float-left">Hi there. Welcome to the Chatroom {{id}}</p>
+                    </div>
+                </div>
+                <br>
+                {% for msg in messages %}
+                    <div class="card message mx-auto">
+                        <div class="card-body">
+                            {% if msg[0]==username %}
+                            <h6 class="card-subtitle mb-2 text-muted text-right">{{msg[0]}}</h6>
+                            <p class="card-text float-right">{{msg[1]}}</p>
+                            {% else %}
+                            <h6 class="card-subtitle mb-2 text-muted text-left">{{msg[0]}}</h6>
+                            <p class="card-text float-left">{{msg[1]}}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <br>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="col-sm-6 chat-talk animated fadeInRight">
+
+            <div class="default-color">
+                <br>
+                <h1 style="color:white;opacity:0.8;">&nbsp Talk</h1>
+            </div>
+            <div class="card">
+                <div class="card-body">
+            {% if username == None %}
+                <div class="chat-login">
+                    <form class="form" action="{{url_for('chat',id=id,username=username,unameForm=unameForm)}}" method="POST">
+                        <div class="md-form">
+                            {{unameForm.uname(class_="form-control form-control-lg")}}
+                            <label for="uname">Join as</label>
+                        </div>
+                        {{unameForm.submit3(class_="btn btn-default btn-lg btn-block full")}}
+                        {{unameForm.csrf_token}}
+                        {% if unameForm.errors %}
+                            <ul class="errors">
+                                {% for field_name, field_errors in unameForm.errors|dictsort if field_errors %}
+                                    {% for error in field_errors %}
+                                        <li>{{ unameForm[field_name].label }}: {{ error }}</li>
+                                    {% endfor %}
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </form>
+                </div>
+            {% endif %}
+            {% if username != None %}
+                <div class="chat-send">
+                    <form class="form" method="POST">
+                        <div class="md-form">
+                            <input type="text" id="message" class="form-control validate">
+                            <label data-error="invalid" data-success="valid" for="message">Message</label>
+                        </div>
+                        <button type="button" class="btn btn-success" id="submit">Send</button>
+                        <br>
+                    </form>
+                    <h1> QR Code </h1>
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data= + http://cuboid.tech/chat/{{id}}">
+                </div>
+            {% endif %}
+        </div>
+    </div>
+            {% if loggedIn %}
+                {% if username == creator %}
+                    <br>
+                    <div class="chat-admin">
+                        <div class="card">
+                            <div class="card-body">
+                                    <h1>&nbsp Admin Panel</h1>
+
+                                <button type="button" class="btn btn-warning" style="width: 300px;"id="clear">Clear Messages (needs refresh)</button>
+                                </div>
+                            </div>
+                        </div>
+                {% endif %}
+            {% endif %}
+        </div>
+</div>
+{% endblock %}

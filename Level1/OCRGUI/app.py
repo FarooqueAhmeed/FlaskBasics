@@ -11,7 +11,6 @@ def readFimage():
     if path:
         im = Image.open(path)
         pytesseract.pytesseract.tesseract_cmd = r'.\\Tesseract-OCR\\tesseract.exe'
-        pytesseract.pytesseract
         text = pytesseract.image_to_string(im, lang = 'eng') ##### Dont forget to change the language code -- snd, urd, eng ... etc
         ResultTextBox.delete('1.0',END)
         ResultTextBox.insert(END,text)
